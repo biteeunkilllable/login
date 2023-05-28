@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <!--<button id="button">button</button>-->
+    <label id="lbl">Loading...</label>
+    <div id="circule"></div>
+    <div id="borders-border">
+        <div id="border"></div>        
+    </div>
+    <div id="login">
+
+        <div id="leftside">
+            <label style="color: white;position: absolute;font-size: 20px;top: 5%;left: 5.4%;">Username:</label>
+        <input  type="text" minlength="4" id="sign-username" placeholder="Username" style="padding-left: 10px ;position: absolute;top: 13%;left: 6%;width: 250px; height: 30px;border-radius: 15px;border: 0px; outline: 0px;font-size: 16px;">
+        <label style="color: white;position: absolute;font-size: 20px;top: 25.4%;left: 5.6%;">Password:</label>
+        <input type="password" minlength="4" id="sign-password" placeholder="Password" style="padding-left: 10px ;position: absolute;top: 34.5%;left: 6%;width: 250px; height: 30px;border-radius: 15px;border: 0px; outline: 0px;font-size: 16px;">
+        <label style="color: white;position: absolute;font-size: 20px;top: 43.4%;left: 5.6%;">confirm Password:</label>
+        <input type="password" minlength="4" id="sign-conform-password" placeholder="confirm password" style="padding-left: 10px ;position: absolute;top: 52.5%;left: 6%;width: 250px; height: 30px;border-radius: 15px;border: 0px; outline: 0px;font-size: 16px;">
+        <button id="Sign-up" style="position: absolute;bottom: 24%;left: 58.3%;width: 90px;height: 35px;border-radius: 100px;border: 0px;font-size: 16px;">Sign up</button>
+            <!--write here for login-->
+        </div>
+        <div id="rightside">
+            <label  style="color: white;position: absolute;font-size: 20px;top: 5%;left: 5.4%;">Username:</label>
+            <input  type="text" id="login-username" placeholder="Username" style="padding-left: 10px ;position: absolute;top: 13%;left: 6%;width: 250px; height: 30px;border-radius: 15px;border: 0px; outline: 0px;font-size: 16px;">
+            <label  style="color: white;position: absolute;font-size: 20px;top: 25.4%;left: 5.6%;">Password:</label>
+            <input  type="password" id="login-password" placeholder="Password" style="padding-left: 10px ;position: absolute;top: 34.5%;left: 6%;width: 250px; height: 30px;border-radius: 15px;border: 0px; outline: 0px;font-size: 16px;">
+            <button id="btnLogin" style="position: absolute;bottom: 40%;left: 58.3%;width: 90px;height: 35px;border-radius: 100px;border: 0px;font-size: 16px;">Login</button>
+        
+            <!--write here for signup-->
+        </div>
+        <div id="switch">
+            <div id="signop">
+                <br><label id="doesnt">already have an         account?</label><br>
+                <button id="loginn" style="font-size: 16px;">Login</button><br>
+            </div>
+            <div id="loginop">
+                <a href="./Forgotpassword.html" id="forgot" style="font-size: 16px;">Forgot username or passowrd?</a>
+                <br><label id="doesnt">doesn't have an         account?</label><br>
+                <label id="create">create new account          within 5 min <br><span style="font-size: 45px;color: black;">      for free!</span></label><br>
+                <button id="sign" style="font-size: 16px;">Create new account</button>
+            </div>
+        </div>
+    </div>
+    <div id="loadingCenter"></div>
+    <script type="module" src="index.js"></script>
+</body>
+</html>
