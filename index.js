@@ -1,4 +1,3 @@
-// import {x} from "./file.js"
 const switsh = document.getElementById("switch")
 const loginn = document.getElementById("loginn")
 const btn = document.getElementById("loginop")
@@ -7,10 +6,6 @@ const txtUser = document.getElementById("login-username")
 const txtpass = document.getElementById("login-password")
 const btn2 = document.getElementById("Sign-up")
 let bool = true
-let users = new Map([["dave","0001"]])
-for (let i = 0 ; i < localStorage.length ; i++){
-    users.set(localStorage.key(i), localStorage.getItem(localStorage.key(i)))
-}
 function onoff(){
 
 //    switsh.style.backgroundColor = "black"
@@ -43,36 +38,67 @@ function onoff(){
     btn.style.animationName = "left"
     btn1.style.animationName = "right"
 }
-loginn.onclick = onoff
+loginn.onclick = ()=>{
+    onoff()
+    document.getElementById("sign-username").value = ""
+    document.getElementById("sign-password").value = ""
+    document.getElementById("sign-conform-password").value = ""
+}
 document.getElementById("sign").onclick = ()=>{
     onoff()
-
+    txtUser.value = ""
+    txtpass.value = ""
 }
 document.getElementById("btnLogin").onclick = ()=>{
-    let pass = txtpass.value
-    if(users.get(txtUser.value) == pass)
-    {document.getElementById("login").style.animationName = "loginn"
-    document.getElementById("loadingCenter").style.animationName = "loading"
-    document.getElementById("borders-border").style.animationName = "border-loading"
-    document.getElementById("border").style.visibility = "visible"
-    //document.getElementById("border").style.animationName = "border-loginn"
-    setTimeout(() => {
-        document.getElementById("lbl").style.animationName = "movedown"
-    }, 1000);
-    setTimeout(() => {
-        // window.location.replace("helloWorld.html")
-    }, 3000);
-}
-
+const options = {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: `{"username":"${txtUser.value}","password":"${txtpass.value}"}`
+    };
+    fetch('http://localhost:3000/check', options)
+    .then(response => response.json())
+    .then(response =>{
+        console.log(response);
+        console.log("obj len =>",response.length);
+        if(response.msg == "not successfull :/")
+        return
+        document.getElementById("login").style.animationName = "loginn"
+        document.getElementById("loadingCenter").style.animationName = "loading"
+        document.getElementById("borders-border").style.animationName = "border-loading"
+        document.getElementById("border").style.visibility = "visible"
+        //document.getElementById("border").style.animationName = "border-loginn"
+        setTimeout(() => {
+            document.getElementById("lbl").style.animationName = "movedown"
+        }, 1000);
+        setTimeout(() => {
+            window.location.href = "chat/index.html"
+        }, 5000);
+        // cats are cute
+        let us = response.username;
+        let pf = response.pfp;
+        const options2 = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: `{"username":"${us}","pfp":"${pf}"}`
+        };
+        localStorage.setItem("username",us)
+        localStorage.setItem("pfp",pf)
+        console.log(localStorage);
+    })
+    .catch(err => console.error(err));
 }
 btn2.onclick = ()=>{
     let user = document.getElementById("sign-username").value
     let pass = document.getElementById("sign-password").value
     let conpass = document.getElementById("sign-conform-password").value
-    if( user.length < 4 || pass.length < 4) {alert("minimum of 4 characters each");return}
+    if( user.length <= 4 || pass.length <= 4) {alert("minimum of 4 characters each");return}
     if(pass != conpass){alert("the password and confirmation doesn't match");return}
-    alert("new account has been made")
-    users.set(user,pass)
-    localStorage.setItem(user,pass)
+const options = {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: `{"username":"${user}","password":"${pass}","pfp":"https://api.dicebear.com/6.x/lorelei-neutral/svg?seed=${user+prompt("tell me somthing about you").replace(" ","-")}"}`
+    };
+    fetch('http://localhost:3000/add', options)
+    .finally(()=>alert("new account has been made"))
 }
-// console.log(users)
+localStorage.setItem("logged",true)
