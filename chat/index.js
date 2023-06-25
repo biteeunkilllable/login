@@ -21,7 +21,7 @@ let session
         .then(res=>{
             // for(i of res.Data)
         for(;Static<res.Data.length;Static++)
-            txt(false,users.get(res.Data[Static].sender),res.Data[Static].sender,res.Data[Static].msg)
+            txt(false,users.get(res.Data[Static].sender),res.Data[Static].sender,res.Data[Static].msg) // showning all msges
             window.location.replace(`#${counter - 1}`)
         })
     })
@@ -29,6 +29,7 @@ let session
         // document.body.onload = ()=>{window.location.replace("")} 
         session = userData.pfp
         txt = function(bool,pic,user = userData.username,mess){
+            console.log("send.value =>",sendTxt.value);
             if(bool)
             if(!sendTxt.value)
             return
@@ -56,11 +57,11 @@ let session
             msg.innerText = mess ?mess:sendTxt.value
             msg.className = "msg"
             div.append(msg)
-            sendTxt.value = ""
             document.getElementById("text").append(div)
-            console.log("touched");
+            // console.log("touched");
         }
         btnTxt.addEventListener("click",()=>{
+            sendTxt.value = ""
             const options = {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
@@ -85,7 +86,7 @@ setInterval(() => {
 .then(res=>res.json())
 .then(res=>{
     for(;Static<res.Data.length;Static++){
-    txt(false,users.get(res.Data[Static].sender),res.Data[Static].sender,res.Data[Static].msg)
+    txt(false,users.get(res.Data[Static].sender),res.Data[Static].sender,res.Data[Static].msg)//real time msg showing
     window.location.replace(`#${counter - 1}`)}
 })
 }, 100);
