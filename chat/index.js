@@ -61,8 +61,8 @@ let session
             console.log("touched");
         }
         btnTxt.addEventListener("click",()=>{
-            console.log(sendTxt.value);
-            if(sendTxt.value != ""){
+            if(!sendTxt.value.length)
+            return
             const options = {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
@@ -73,7 +73,7 @@ let session
                 .then(res=>{
                     // txt(true,session,userData.username)
                     window.location.replace(`#${counter - 1}`)
-                })}
+                })
             // console.log(`#${counter - 1}`);
         })
         // bool = true
