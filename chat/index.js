@@ -29,7 +29,6 @@ let session
         // document.body.onload = ()=>{window.location.replace("")} 
         session = userData.pfp
         txt = function(bool,pic,user = userData.username,mess){
-            console.log("send.value =>",sendTxt.value);
             if(bool)
             if(!sendTxt.value)
             return
@@ -61,7 +60,7 @@ let session
             // console.log("touched");
         }
         btnTxt.addEventListener("click",()=>{
-            
+            console.log("send.value =>",sendTxt.value);
             const options = {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},

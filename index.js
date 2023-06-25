@@ -58,8 +58,8 @@ const options = {
     fetch('https://vercl-proj.vercel.app/check', options)
     .then(response => response.json())
     .then(response =>{
-        console.log(response);
-        console.log("obj len =>",response.length);
+        // console.log(response);
+        // console.log("obj len =>",response.length);
         if(response.msg == "not successfull :/")
         return
         document.getElementById("login").style.animationName = "loginn"
@@ -83,7 +83,7 @@ const options = {
         };
         localStorage.setItem("username",us)
         localStorage.setItem("pfp",pf)
-        console.log(localStorage);
+        // console.log(localStorage);
     })
     .catch(err => console.error(err));
 }
