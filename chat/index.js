@@ -60,14 +60,14 @@ let session
             document.getElementById("text").append(div)
             // console.log("touched");
         }
-        btnTxt.addEventListener("click",()=>{
-            sendTxt.value = ""
+        btnTxt.addEventListener("click",async()=>{
+            
             const options = {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: `{"msg":"${sendTxt.value}","sender":"${userData.username}"}`
                 };
-                fetch('https://vercl-proj.vercel.app/newMsg', options)// will be altered
+                await fetch('https://vercl-proj.vercel.app/newMsg', options)// will be altered
                 .then(res=>res.json())
                 .then(res=>{
                     // txt(true,session,userData.username)
@@ -75,6 +75,7 @@ let session
                 })
             // console.log(`#${counter - 1}`);
         })
+        sendTxt.value = ""
         // bool = true
     })
 const btnTxt = document.getElementById("btn-text")
