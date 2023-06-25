@@ -60,8 +60,9 @@ let session
             // console.log("touched");
         }
         btnTxt.addEventListener("click",()=>{
-            console.log("send.value =>",sendTxt.value);
-            const options = {
+            // console.log("send.value =>",sendTxt.value);
+            if(sendTxt.value){
+                const options = {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: `{"msg":"${sendTxt.value}","sender":"${userData.username}"}`
@@ -74,6 +75,7 @@ let session
                     sendTxt.value = ""
                 })
             // console.log(`#${counter - 1}`);
+            }
         })
 
         // bool = true
