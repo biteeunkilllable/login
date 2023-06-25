@@ -28,7 +28,6 @@ let session
         })
     })
     .finally(()=>{
-        // document.body.onload = ()=>{window.location.replace("")} 
         session = userData.pfp
         txt = function(bool,pic,user = userData.username,mess){
             if(bool)
@@ -76,6 +75,7 @@ let session
                 })
             // console.log(`#${counter - 1}`);
         })
+    }).finally(()=>{
         setInterval(() => {
             fetch("https://vercl-proj.vercel.app/msg")// will be altered
         .then(res=>res.json())
@@ -85,6 +85,5 @@ let session
             window.location.replace(`#${counter - 1}`)}
         })
         }, 100);
-
     })
 
