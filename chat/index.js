@@ -1,6 +1,6 @@
 let userData = JSON.parse(JSON.stringify(localStorage))
 if(!localStorage.getItem("logged")){
-    window.location.replace("http://127.0.0.1:5500/front-end/login/")
+    window.location.replace("https://superchat-274e.onrender.com/")
     alert("please login")
 }
 else
