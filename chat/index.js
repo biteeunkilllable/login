@@ -85,9 +85,9 @@ let msgContrtol = setInterval(() => {
 .then(res=>res.json())
 .then(res=>{
         if(!userData.username){
-            alert("please login")
-        window.location.replace("https://superchat-274e.onrender.com/")
-        clearInterval(msgContrtol)
+            // alert("please login")
+            window.location.replace("https://superchat-274e.onrender.com")
+            clearInterval(msgContrtol)
     }
 
     for(;Static<res.Data.length;Static++){
