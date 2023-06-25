@@ -60,22 +60,23 @@ let session
             document.getElementById("text").append(div)
             // console.log("touched");
         }
-        btnTxt.addEventListener("click",async()=>{
+        btnTxt.addEventListener("click",()=>{
             
             const options = {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: `{"msg":"${sendTxt.value}","sender":"${userData.username}"}`
                 };
-                await fetch('https://vercl-proj.vercel.app/newMsg', options)// will be altered
+                fetch('https://vercl-proj.vercel.app/newMsg', options)// will be altered
                 .then(res=>res.json())
                 .then(res=>{
                     // txt(true,session,userData.username)
                     window.location.replace(`#${counter - 1}`)
+                    sendTxt.value = ""
                 })
             // console.log(`#${counter - 1}`);
         })
-        sendTxt.value = ""
+
         // bool = true
     })
 const btnTxt = document.getElementById("btn-text")
