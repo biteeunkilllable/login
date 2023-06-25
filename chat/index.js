@@ -78,15 +78,16 @@ let session
     })
 const btnTxt = document.getElementById("btn-text")
 const sendTxt = document.getElementById("send")
-setInterval(() => {
+let msgContrtol = setInterval(() => {
     // if(!x)
     // window.location.replace("http://127.0.0.1:5500/front-end/login/")
     fetch("https://vercl-proj.vercel.app/msg")// will be altered
 .then(res=>res.json())
 .then(res=>{
         if(!userData.username){
+            alert("please login")
         window.location.replace("https://superchat-274e.onrender.com/")
-        alert("please login")
+        clearInterval(msgContrtol)
     }
 
     for(;Static<res.Data.length;Static++){
