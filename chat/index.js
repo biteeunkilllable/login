@@ -61,8 +61,6 @@ let session
             console.log("touched");
         }
         btnTxt.addEventListener("click",()=>{
-            if(!sendTxt.value.length)
-            return
             const options = {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
