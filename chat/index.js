@@ -5,6 +5,8 @@ if(!localStorage.getItem("logged")){
 }
 else
 localStorage.removeItem("logged") 
+const btnTxt = document.getElementById("btn-text")
+const sendTxt = document.getElementById("send")
 let users = new Map()
 let txt
 let Static = 0
@@ -74,18 +76,15 @@ let session
                 })
             // console.log(`#${counter - 1}`);
         })
-        // bool = true
+        setInterval(() => {
+            fetch("https://vercl-proj.vercel.app/msg")// will be altered
+        .then(res=>res.json())
+        .then(res=>{
+            for(;Static<res.Data.length;Static++){
+            txt(false,users.get(res.Data[Static].sender),res.Data[Static].sender,res.Data[Static].msg)
+            window.location.replace(`#${counter - 1}`)}
+        })
+        }, 100);
+
     })
-const btnTxt = document.getElementById("btn-text")
-const sendTxt = document.getElementById("send")
-setInterval(() => {
-    // if(!x)
-    // window.location.replace("http://127.0.0.1:5500/front-end/login/")
-    fetch("https://vercl-proj.vercel.app/msg")// will be altered
-.then(res=>res.json())
-.then(res=>{
-    for(;Static<res.Data.length;Static++){
-    txt(false,users.get(res.Data[Static].sender),res.Data[Static].sender,res.Data[Static].msg)
-    window.location.replace(`#${counter - 1}`)}
-})
-}, 100);
+
