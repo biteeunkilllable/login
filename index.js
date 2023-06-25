@@ -55,7 +55,7 @@ const options = {
     headers: {'Content-Type': 'application/json'},
     body: `{"username":"${txtUser.value}","password":"${txtpass.value}"}`
     };
-    fetch('http://localhost:3000/check', options)
+    fetch('https://vercl-proj.vercel.app/check', options)
     .then(response => response.json())
     .then(response =>{
         console.log(response);
@@ -98,7 +98,7 @@ const options = {
     headers: {'Content-Type': 'application/json'},
     body: `{"username":"${user}","password":"${pass}","pfp":"https://api.dicebear.com/6.x/lorelei-neutral/svg?seed=${user+prompt("tell me somthing about you").replace(" ","-")}"}`
     };
-    fetch('http://localhost:3000/add', options)
+    fetch('https://vercl-proj.vercel.app/add', options)
     .finally(()=>alert("new account has been made"))
 }
 localStorage.setItem("logged",true)

@@ -10,13 +10,13 @@ let txt
 let Static = 0
 let counter = 1
 let session
-    fetch("http://localhost:3000/users")// will be ultered 
+    fetch("https://vercl-proj.vercel.app/users")// will be ultered 
     .then(res=>res.json())
     .then(res=>{
         for( i of res.Data)users.set(i.username,i.pfp)
     })
     .then(()=>{
-        fetch("http://localhost:3000/msg")// will be altered
+        fetch("https://vercl-proj.vercel.app/msg")// will be altered
         .then(res=>res.json())
         .then(res=>{
             // for(i of res.Data)
@@ -66,7 +66,7 @@ let session
                 headers: {'Content-Type': 'application/json'},
                 body: `{"msg":"${sendTxt.value}","sender":"${userData.username}"}`
                 };
-                fetch('http://localhost:3000/newMsg', options)// will be altered
+                fetch('https://vercl-proj.vercel.app/newMsg', options)// will be altered
                 .then(res=>res.json())
                 .then(res=>{
                     // txt(true,session,userData.username)
@@ -81,7 +81,7 @@ const sendTxt = document.getElementById("send")
 setInterval(() => {
     // if(!x)
     // window.location.replace("http://127.0.0.1:5500/front-end/login/")
-    fetch("http://localhost:3000/msg")// will be altered
+    fetch("https://vercl-proj.vercel.app/msg")// will be altered
 .then(res=>res.json())
 .then(res=>{
     for(;Static<res.Data.length;Static++){
