@@ -101,4 +101,3 @@ const options = {
     fetch('https://vercl-proj.vercel.app/add', options)
     .finally(()=>alert("new account has been made"))
 }
-localStorage.setItem("logged",true)

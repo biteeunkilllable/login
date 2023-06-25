@@ -1,10 +1,4 @@
 let userData = JSON.parse(JSON.stringify(localStorage))
-if(!localStorage.getItem("logged")){
-    window.location.replace("https://superchat-274e.onrender.com/")
-    alert("please login")
-}
-else
-localStorage.removeItem("logged") 
 let users = new Map()
 let txt
 let Static = 0
@@ -60,7 +54,10 @@ let session
             // console.log("touched");
         }
         btnTxt.addEventListener("click",()=>{
-            console.log("send.value =>",sendTxt.value);
+            if(!userData.username){
+    window.location.replace("https://superchat-274e.onrender.com/")
+    alert("please login")
+}
             if(sendTxt.value.length){
                 const options = {
                 method: 'POST',
@@ -87,6 +84,11 @@ setInterval(() => {
     fetch("https://vercl-proj.vercel.app/msg")// will be altered
 .then(res=>res.json())
 .then(res=>{
+        if(!userData.username){
+        window.location.replace("https://superchat-274e.onrender.com/")
+        alert("please login")
+    }
+
     for(;Static<res.Data.length;Static++){
     txt(false,users.get(res.Data[Static].sender),res.Data[Static].sender,res.Data[Static].msg)//real time msg showing
     window.location.replace(`#${counter - 1}`)}
