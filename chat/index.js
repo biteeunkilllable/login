@@ -96,11 +96,7 @@ let msgContrtol = setInterval(() => {
 })
 }, 100);
 document.addEventListener("keypress",event=>{
-
-    if(!userData.username && event.key == "Enter"){
-window.location.replace("https://superchat-274e.onrender.com/")
-alert("please login")
-}
+    if(event.key == "Enter"){
     if(sendTxt.value.length){
         const options = {
         method: 'POST',
@@ -113,6 +109,6 @@ alert("please login")
             // txt(true,session,userData.username)
             window.location.replace(`#${counter - 1}`)
             sendTxt.value = ""
-        })}
+        })}}
     // console.log(`#${counter - 1}`);
 })
