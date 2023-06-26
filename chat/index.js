@@ -109,6 +109,7 @@ document.addEventListener("keypress",event=>{
             // txt(true,session,userData.username)
             window.location.replace(`#${counter - 1}`)
             sendTxt.value = ""
-        })}}
+        })}
+    }
     // console.log(`#${counter - 1}`);
 })
