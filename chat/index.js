@@ -109,7 +109,9 @@ document.addEventListener("keypress",event=>{
             // txt(true,session,userData.username)
             window.location.replace(`#${counter - 1}`)
             sendTxt.value = ""
-            sendTxt.focus()
+            setTimeout(() => {
+                sendTxt.focus()
+            }, 2000);
         })}
     }
     // console.log(`#${counter - 1}`);
