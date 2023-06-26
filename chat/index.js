@@ -93,6 +93,7 @@ let msgContrtol = setInterval(() => {
     for(;Static<res.Data.length;Static++){
     txt(false,users.get(res.Data[Static].sender),res.Data[Static].sender,res.Data[Static].msg)//real time msg showing
     window.location.replace(`#${counter - 1}`)}
+    sendTxt.focus()
 })
 }, 100);
 document.addEventListener("keypress",event=>{
@@ -109,9 +110,6 @@ document.addEventListener("keypress",event=>{
             // txt(true,session,userData.username)
             window.location.replace(`#${counter - 1}`)
             sendTxt.value = ""
-            setTimeout(() => {
-                sendTxt.focus()
-            }, 2000);
         })}
     }
     // console.log(`#${counter - 1}`);
