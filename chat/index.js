@@ -95,3 +95,24 @@ let msgContrtol = setInterval(() => {
     window.location.replace(`#${counter - 1}`)}
 })
 }, 100);
+document.addEventListener("keypress",event=>{
+
+    if(!userData.username && event.key == "Enter"){
+window.location.replace("https://superchat-274e.onrender.com/")
+alert("please login")
+}
+    if(sendTxt.value.length){
+        const options = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: `{"msg":"${sendTxt.value}","sender":"${userData.username}"}`
+        };
+        fetch('https://vercl-proj.vercel.app/newMsg', options)// will be altered
+        .then(res=>res.json())
+        .then(res=>{
+            // txt(true,session,userData.username)
+            window.location.replace(`#${counter - 1}`)
+            sendTxt.value = ""
+        })}
+    // console.log(`#${counter - 1}`);
+})
