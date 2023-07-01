@@ -86,14 +86,27 @@ document.getElementById("btnLogin").onclick = () => {
     })
     .catch((err) => console.error(err));
 };
-btn2.onclick = () => {
+btn2.onclick = async () => {
   let user = document.getElementById("sign-username").value;
   let pass = document.getElementById("sign-password").value;
   let conpass = document.getElementById("sign-conform-password").value;
-  if (user.length <= 4 || pass.length <= 4) {
+  if (user.length < 4 || pass.length < 4) {
     alert("minimum of 4 characters each");
     return;
   }
+  const options2 = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: `{"username":"${user}","password":"${pass}"}`,
+  };
+  await fetch("https://vercl-proj.vercel.app/check", options2)
+    .then((response) => response.json())
+    .then((response) => {
+      if (response.msg != "not successfull :/") {
+        alert("username already taken");
+        return;
+      }
+    });
   if (pass != conpass) {
     alert("the password and confirmation doesn't match");
     return;
