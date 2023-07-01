@@ -102,7 +102,7 @@ btn2.onclick = () => {
   fetch("https://vercl-proj.vercel.app/check", options2)
     .then((response) => response.json())
     .then((response) => {
-      if (response.msg != "not successfull :/") {
+      if (response.msg == "not successfull :/") {
         if (pass != conpass) {
           alert("the password and confirmation doesn't match");
           return;
