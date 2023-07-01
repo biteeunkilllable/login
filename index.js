@@ -86,7 +86,7 @@ document.getElementById("btnLogin").onclick = () => {
     })
     .catch((err) => console.error(err));
 };
-btn2.onclick = async () => {
+btn2.onclick = () => {
   let user = document.getElementById("sign-username").value;
   let pass = document.getElementById("sign-password").value;
   let conpass = document.getElementById("sign-conform-password").value;
@@ -99,26 +99,24 @@ btn2.onclick = async () => {
     headers: { "Content-Type": "application/json" },
     body: `{"username":"${user}","password":"${pass}"}`,
   };
-  await fetch("https://vercl-proj.vercel.app/check", options2)
+  fetch("https://vercl-proj.vercel.app/check", options2)
     .then((response) => response.json())
     .then((response) => {
       if (response.msg != "not successfull :/") {
-        alert("username already taken");
-        return;
-      }
+        if (pass != conpass) {
+          alert("the password and confirmation doesn't match");
+          return;
+        }
+        const options = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: `{"username":"${user}","password":"${pass}","pfp":"https://api.dicebear.com/6.x/lorelei-neutral/svg?seed=${
+            user + prompt("tell me somthing about you").replaceAll(" ", "-")
+          }"}`,
+        };
+        fetch("https://vercl-proj.vercel.app/add", options).finally(() =>
+          alert("new account has been made")
+        );
+      } else alert("username already taken");
     });
-  if (pass != conpass) {
-    alert("the password and confirmation doesn't match");
-    return;
-  }
-  const options = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: `{"username":"${user}","password":"${pass}","pfp":"https://api.dicebear.com/6.x/lorelei-neutral/svg?seed=${
-      user + prompt("tell me somthing about you").replaceAll(" ", "-")
-    }"}`,
-  };
-  fetch("https://vercl-proj.vercel.app/add", options).finally(() =>
-    alert("new account has been made")
-  );
 };
